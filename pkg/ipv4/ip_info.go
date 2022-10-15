@@ -1,15 +1,13 @@
-package datasources
+package ipv4
 
 import (
 	"io"
 	"net/http"
-
-	"github.com/dominickbrasileiro/ddns-google-domains/internal"
 )
 
 type IpInfoDatasource struct{}
 
-var _ internal.IPv4Datasource = (*IpInfoDatasource)(nil)
+var _ IPv4Datasource = (*IpInfoDatasource)(nil)
 
 func NewIpInfoDatasource() *IpInfoDatasource {
 	return &IpInfoDatasource{}

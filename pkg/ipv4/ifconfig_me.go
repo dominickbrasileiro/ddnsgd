@@ -1,15 +1,13 @@
-package datasources
+package ipv4
 
 import (
 	"io"
 	"net/http"
-
-	"github.com/dominickbrasileiro/ddns-google-domains/internal"
 )
 
 type IfConfigMeDatasource struct{}
 
-var _ internal.IPv4Datasource = (*IfConfigMeDatasource)(nil)
+var _ IPv4Datasource = (*IfConfigMeDatasource)(nil)
 
 func NewIfConfigMeDatasource() *IfConfigMeDatasource {
 	return &IfConfigMeDatasource{}

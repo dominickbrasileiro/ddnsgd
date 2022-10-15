@@ -1,4 +1,4 @@
-package internal
+package ipv4
 
 import "errors"
 

@@ -1,15 +1,13 @@
-package datasources
+package ipv4
 
 import (
 	"io"
 	"net/http"
-
-	"github.com/dominickbrasileiro/ddns-google-domains/internal"
 )
 
 type IpifyDatasource struct{}
 
-var _ internal.IPv4Datasource = (*IpifyDatasource)(nil)
+var _ IPv4Datasource = (*IpifyDatasource)(nil)
 
 func NewIpifyDatasource() *IpifyDatasource {
 	return &IpifyDatasource{}
