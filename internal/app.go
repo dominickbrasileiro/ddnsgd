@@ -18,6 +18,8 @@ type AppConfig struct {
 var lastUpdatedIP string
 
 func Run(config *AppConfig, logger *log.Logger) {
+	logger.Printf("[App] Starting DDNS %s | Interval: %d seconds\n", config.Hostname, config.Interval)
+
 	datasources := []ipv4.IPv4Datasource{
 		ipv4.NewIpifyDatasource(),
 		ipv4.NewIpInfoDatasource(),
