@@ -13,6 +13,10 @@ func NewIfConfigMeDatasource() *IfConfigMeDatasource {
 	return &IfConfigMeDatasource{}
 }
 
+func (d *IfConfigMeDatasource) GetName() string {
+	return "ifconfig.me"
+}
+
 func (d *IfConfigMeDatasource) FetchIPv4() (string, bool) {
 	res, err := http.Get("https://ifconfig.me")
 

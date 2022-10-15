@@ -13,6 +13,10 @@ func NewIpifyDatasource() *IpifyDatasource {
 	return &IpifyDatasource{}
 }
 
+func (d *IpifyDatasource) GetName() string {
+	return "ipify"
+}
+
 func (d *IpifyDatasource) FetchIPv4() (string, bool) {
 	res, err := http.Get("https://api.ipify.org")
 

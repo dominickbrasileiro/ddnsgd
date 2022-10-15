@@ -13,6 +13,10 @@ func NewIpInfoDatasource() *IpInfoDatasource {
 	return &IpInfoDatasource{}
 }
 
+func (d *IpInfoDatasource) GetName() string {
+	return "ipinfo.io"
+}
+
 func (d *IpInfoDatasource) FetchIPv4() (string, bool) {
 	res, err := http.Get("https://ipinfo.io/ip")
 

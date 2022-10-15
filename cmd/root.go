@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/dominickbrasileiro/ddns-google-domains/internal"
@@ -25,7 +26,9 @@ var rootCmd = &cobra.Command{
 			Hostname: hostname,
 		}
 
-		internal.Run(&config)
+		logger := log.Default()
+
+		internal.Run(&config, logger)
 	},
 }
 
