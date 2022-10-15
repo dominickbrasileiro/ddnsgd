@@ -26,7 +26,7 @@ func (r *IPv4Repository) FetchIPv4() (string, error) {
 	for _, ds := range r.Datasources {
 		result, ok := ds.FetchIPv4()
 
-		if ok {
+		if ok && ValidateIPv4(result) {
 			r.logger.Printf("[IPv4Repository] Fetched IPv4 from %s: %s\n", ds.GetName(), result)
 			return result, nil
 		}
