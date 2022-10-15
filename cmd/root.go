@@ -44,4 +44,9 @@ func init() {
 	rootCmd.Flags().StringVarP(&username, "username", "u", "", "The generated username associated with the host that is to be updated.")
 	rootCmd.Flags().StringVarP(&password, "password", "p", "", "The generated password associated with the host that is to be updated.")
 	rootCmd.Flags().StringVarP(&hostname, "hostname", "H", "", "subdomain.yourdomain.com")
+
+	rootCmd.MarkFlagRequired("interval")
+	rootCmd.MarkFlagRequired("username")
+	rootCmd.MarkFlagRequired("password")
+	rootCmd.MarkFlagRequired("hostname")
 }
