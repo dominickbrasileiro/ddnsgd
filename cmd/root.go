@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/dominickbrasileiro/ddns-google-domains/internal"
+	"github.com/dominickbrasileiro/ddnsgd/internal"
 	"github.com/spf13/cobra"
 )
 

@@ -4,8 +4,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/dominickbrasileiro/ddns-google-domains/pkg/googledomains"
-	"github.com/dominickbrasileiro/ddns-google-domains/pkg/ipv4"
+	"github.com/dominickbrasileiro/ddnsgd/pkg/googledomains"
+	"github.com/dominickbrasileiro/ddnsgd/pkg/ipv4"
 )
 
 type AppConfig struct {

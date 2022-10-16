@@ -1,4 +1,4 @@
-module github.com/dominickbrasileiro/ddns-google-domains
+module github.com/dominickbrasileiro/ddnsgd
 
 go 1.19
 

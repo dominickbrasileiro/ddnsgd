@@ -1,6 +1,6 @@
 package main
 
-import "github.com/dominickbrasileiro/ddns-google-domains/cmd"
+import "github.com/dominickbrasileiro/ddnsgd/cmd"
 
 func main() {
 	cmd.Execute()
