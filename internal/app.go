@@ -2,7 +2,6 @@ package internal
 
 import (
 	"log"
-	"time"
 
 	"github.com/dominickbrasileiro/ddnsgd/pkg/googledomains"
 	"github.com/dominickbrasileiro/ddnsgd/pkg/ipv4"
@@ -20,30 +19,17 @@ var lastUpdatedIP string
 func Run(config *AppConfig, logger *log.Logger) {
 	logger.Printf("[App] Starting DDNS %s | Interval: %d seconds\n", config.Hostname, config.Interval)
 
-	datasources := []ipv4.IPv4Datasource{
-		ipv4.NewIpifyDatasource(),
-		ipv4.NewIpInfoDatasource(),
-		ipv4.NewIfConfigMeDatasource(),
-	}
+	ipv4Ch := make(chan string)
 
-	repository := ipv4.NewIPv4Repository(datasources, logger)
+	go ipv4.IPv4Polling(config.Interval, logger, ipv4Ch)
 
-	ticker := time.NewTicker(time.Second * time.Duration(config.Interval))
-
-	for range ticker.C {
-		ipv4, err := repository.FetchIPv4()
-
-		if err != nil {
-			logger.Println("[App] Failed to fetch IPv4 address")
+	for ip := range ipv4Ch {
+		if ip == lastUpdatedIP {
 			continue
 		}
 
-		if ipv4 == lastUpdatedIP {
-			continue
-		}
-
-		err = googledomains.UpdateDDNS(
-			ipv4,
+		err := googledomains.UpdateDDNS(
+			ip,
 			config.Username,
 			config.Password,
 			config.Hostname,
@@ -61,7 +47,8 @@ func Run(config *AppConfig, logger *log.Logger) {
 			continue
 		}
 
-		lastUpdatedIP = ipv4
+		lastUpdatedIP = ip
+
 		logger.Println("[App] Google Domains DDNS updated successfully")
 	}
 }
