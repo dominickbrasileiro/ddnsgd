@@ -16,8 +16,8 @@ var hostname string
 
 var rootCmd = &cobra.Command{
 	Use:   "ddnsgd",
-	Short: "TODO",
-	Long:  "TODO",
+	Short: "Easy Google Domains dynamic DNS.",
+	Long:  "Easy Google Domains dynamic DNS.",
 	Run: func(cmd *cobra.Command, args []string) {
 		config := internal.AppConfig{
 			Interval: interval,
